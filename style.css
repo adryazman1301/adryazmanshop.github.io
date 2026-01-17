@@ -224,31 +224,44 @@ section h3::after {
 
 .about p {
   background: var(--card);
-  padding: 40px;
-  border-radius: 24px;
+  padding: 50px 40px;
+  border-radius: 28px;
   box-shadow: var(--shadow);
-  font-size: 16px;
-  line-height: 1.8;
-  border-left: 5px solid var(--gold);
-  transition: all 0.3s ease;
+  font-size: 18px;
+  line-height: 1.9;
+  border-left: 8px solid var(--gold);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.about p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 100%);
+  border-radius: 28px 0 0 28px;
 }
 
 .about p:hover {
   box-shadow: var(--shadow-hover);
-  transform: translateX(8px);
+  transform: translateX(12px);
 }
 
 .about img {
   width: 100%;
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: var(--shadow-hover);
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   object-fit: cover;
-  height: 400px;
+  height: 450px;
 }
 
 .about img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
 }
 
 /* ===== GRID CARD ===== */
@@ -425,30 +438,6 @@ footer:hover {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .about, .contact {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .hero h2 {
-    font-size: 42px;
-  }
-  
-  section h3 {
-    font-size: 32px;
-  }
-  
-  nav {
-    flex-wrap: wrap;
-  }
-  
-  nav a {
-    margin-left: 10px;
-    font-size: 14px;
-  }
-}
-
 @media (max-width: 768px) {
   section {
     padding: 60px 8%;
@@ -500,13 +489,18 @@ footer:hover {
     width: 60px;
   }
   
-  .grid {
+  .about {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 40px;
   }
   
-  .card {
-    padding: 30px 20px;
+  .about p {
+    padding: 35px 30px;
+    font-size: 15px;
+  }
+  
+  .about img {
+    height: 300px;
   }
   
   .gallery {
@@ -519,8 +513,24 @@ footer:hover {
     border-radius: 16px;
   }
   
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
   form {
     padding: 30px 20px;
+  }
+  
+  form input, form textarea {
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  
+  form button {
+    padding: 12px;
+    font-size: 14px;
   }
   
   .contact p {
@@ -531,97 +541,147 @@ footer:hover {
 
 @media (max-width: 480px) {
   section {
-    padding: 40px 5%;
+    padding: 50px 6%;
   }
   
   header {
-    padding: 12px 5%;
+    padding: 12px 6%;
+    gap: 12px;
+  }
+  
+  header h1 {
+    font-size: 18px;
+  }
+  
+  nav {
+    gap: 6px;
   }
   
   nav a {
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 5px 10px;
+    font-size: 11px;
+    margin: 0;
   }
   
   .hero {
     min-height: 70vh;
-    padding: 30px 5%;
+    padding: 30px 6%;
+  }
+  
+  .hero div {
+    width: 100%;
   }
   
   .hero h2 {
-    font-size: 24px;
+    font-size: 26px;
+    margin-bottom: 12px;
   }
   
   .hero p {
     font-size: 14px;
+    margin-bottom: 20px;
   }
   
   .hero button {
-    padding: 12px 30px;
-    font-size: 14px;
+    padding: 12px 35px;
+    font-size: 13px;
   }
   
   section h3 {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  }
+  
+  section h3::after {
+    width: 50px;
+    height: 3px;
+  }
+  
+  .sub {
+    font-size: 14px;
+    margin-bottom: 40px;
   }
   
   .about {
+    grid-template-columns: 1fr;
     gap: 30px;
+    margin-top: 30px;
   }
   
   .about p {
-    padding: 25px 15px;
+    padding: 30px 20px;
     font-size: 14px;
+    line-height: 1.7;
+    border-left: 6px solid var(--gold);
   }
   
   .about img {
     height: 250px;
+    border-radius: 20px;
   }
   
   .grid {
     grid-template-columns: 1fr;
     gap: 15px;
+    margin-top: 30px;
   }
   
   .card {
-    padding: 20px 15px;
-    font-size: 14px;
+    padding: 25px 18px;
+    font-size: 13px;
+    border-top: 3px solid var(--gold);
   }
   
   .gallery {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
+    margin-top: 30px;
   }
   
   .gallery img {
-    height: 150px;
-    border-radius: 12px;
-  }
-  
-  form {
-    padding: 20px 15px;
-  }
-  
-  form input, form textarea {
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    font-size: 13px;
-  }
-  
-  form button {
-    padding: 12px;
-    font-size: 14px;
+    height: 140px;
+    border-radius: 14px;
   }
   
   .contact {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  form {
+    padding: 25px 18px;
+    border-radius: 20px;
+  }
+  
+  form input, form textarea {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  
+  form textarea {
+    min-height: 100px;
+  }
+  
+  form button {
+    padding: 11px;
+    font-size: 13px;
+    border-radius: 25px;
   }
   
   .contact p {
-    padding: 20px 15px;
+    padding: 25px 18px;
+    border-radius: 20px;
     font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  footer {
+    padding: 25px 6%;
+    font-size: 12px;
   }
 }
 
@@ -636,13 +696,3 @@ footer:hover {
     transform: translateY(0);
   }
 }
-.gallery img{width:100%;border-radius:15px;transition:.4s;}
-.gallery img:hover{transform:scale(1.08);}
-
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
-form input,textarea{width:100%;padding:12px;margin-bottom:12px;border-radius:10px;border:1px solid #ccc;}
-form button{background:var(--blue);color:#fff;padding:12px;border:none;border-radius:25px;}
-
-footer{background:var(--blue);color:#fff;text-align:center;padding:20px;}
-
-@media(max-width:900px){.about,.contact{grid-template-columns:1fr;}}
